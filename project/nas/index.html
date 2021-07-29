@@ -1,0 +1,40 @@
+<head>
+	<style>
+		body {
+			margin: 0;
+		}
+	</style>
+
+	<script src="//unpkg.com/3d-force-graph"></script>
+</head>
+
+<body>
+	<div id="3d-graph"></div>
+
+	<script type="module">
+		const elem = document.getElementById('3d-graph');
+
+		const Graph = ForceGraph3D()
+			(elem)
+			.jsonUrl('./data/nas_data.json')
+			.nodeLabel(node => node.id)
+			.nodeAutoColorBy(node => node.type)
+			.nodeVal(node => (node.metric+0.5) * 4)
+			.linkWidth(2)
+			.linkOpacity(0.08)
+			.linkAutoColorBy(link => link.type)
+			.onNodeClick(node => {
+				window.open(`./src/test.html`) //${node.id}.html`)
+			});
+
+		const linkForce = Graph
+			.d3Force('link')
+			.distance(link => link.length ** 2);
+
+
+		function runCanvas() {
+       		this.run = !this.run;
+	   		!this.run ? this.Graph.pauseAnimation() : this.Graph.resumeAnimation();
+   		}
+	</script>
+</body>
