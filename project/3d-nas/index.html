@@ -1,0 +1,101 @@
+<head>
+    <link rel="stylesheet" href="custom.css">
+    <script src="//unpkg.com/three"></script>
+    <script src="//unpkg.com/3d-force-graph"></script>
+    <script src="//d3js.org/d3-dsv.v1.min.js"></script>
+    <script src="//d3js.org/d3-fetch.v1.min.js"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" type="text/css" href="css/util.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="top text">
+        <h1 id="gtype" class="topChild info"> All Settings </h1>
+        <select id="gselect" class="topChild">
+            <option value="None">-- Select --</option>
+            <option value="1" selected>All Settings</option>
+            <option value="2">Cls-50-1000</option>
+            <option value="3">Cls-50-100</option>
+            <option value="4">Cls-10-1000</option>
+            <option value="5">Cls-10c</option>
+            <option value="6">Seg</option>
+            <option value="7">Seg-4x</option>
+            <option value="8">3DDet</option>
+            <option value="9">Video</option>
+            <option value="10">Video-p</option>
+        </select>
+    </div>
+
+    <div id="left-float">
+        <h3 id="name" class="text info">[Node ID]</h3>
+        <div id="structure"></div>
+
+        <h2 class="text info">Similar Neighbors:</h2>
+        <div id="neighbors"></div>
+    </div>
+
+    <button class="leftbtn" onclick="openNavLeft()">☰ Node's Info</button>
+    <button class="rightbtn" onclick="openNavRight()">☰ Neighbors' Info</button>
+
+    <div id="right-float">
+        <h2 class="text info">Nearest 10 Neighbors:</h2>
+        <div id="members"></div>
+    </div>
+
+    <div id="bottom-float">
+        <div class="table100 ver3 info">
+            <div class="table100-head">
+                <table>
+                    <thead>
+                        <tr class="row100-head">
+                            <th class="column1">ID</th>
+                            <th class="column2">Top1</th>
+                            <th class="column2">Top5</th>
+                            <th class="column2">mIoU</th>
+                            <th class="column2">mAcc</th>
+                            <th class="column2">aAcc</th>
+                            <th class="column2">Moderate</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+
+            <div class="table100-body js-pscroll" style="height:85%;">
+                <table>
+                    <tbody id="mrows">
+                        <tr class="row100-body">
+                            <td class="column1">--</td>
+                            <td class="column2">--</td>
+                            <td class="column2">--</td>
+                            <td class="column2">--</td>
+                            <td class="column2">--</td>
+                            <td class="column2">--</td>
+                            <td class="column2">--</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div id="top-search-bar">
+        <form class="example" style="margin:auto;max-width:300px" onsubmit="false">
+            <input type="text" placeholder="Search by Node ID..." id="searchbar">
+            <input id="hiddenText" type="text" style="display:none" />
+            <button type="button" onclick="searchNode()"><i class="fa fa-search"></i></button>
+        </form>
+    </div>
+
+    <div id="3d-graph" class="right-half"></div>
+    <script type="text/javascript" src="page.js"></script>
+</body>
