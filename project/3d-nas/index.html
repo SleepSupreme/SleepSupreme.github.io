@@ -2,6 +2,7 @@
     <link rel="stylesheet" href="custom.css">
     <script src="//unpkg.com/three"></script>
     <script src="//unpkg.com/3d-force-graph"></script>
+    <script src="https://unpkg.com/d3-force-3d"></script>
     <script src="//d3js.org/d3-dsv.v1.min.js"></script>
     <script src="//d3js.org/d3-fetch.v1.min.js"></script>
 
@@ -20,9 +21,9 @@
 
 <body>
     <div class="top text">
-        <h1 id="gtype" class="topChild info"> All Settings </h1>
+        <h1 id="gtype" class="topChild info" align="center"> All Settings </h1>
         <select id="gselect" class="topChild">
-            <option value="None">-- Select --</option>
+            <option value="None">-- Select the shown Graph --</option>
             <option value="1" selected>All Settings</option>
             <option value="2">Cls-50-1000</option>
             <option value="3">Cls-50-100</option>
@@ -34,22 +35,41 @@
             <option value="9">Video</option>
             <option value="10">Video-p</option>
         </select>
+        <select id="cselect" class="topChild">
+            <option value="None">-- Control the Graph by --</option>
+            <option value="1" selected>Mouse</option>
+            <option value="2">Keyboard</option>
+        </select>
     </div>
 
     <div id="left-float">
-        <h3 id="name" class="text info">[Node ID]</h3>
-        <div id="structure"></div>
-
-        <h2 class="text info">Similar Neighbors:</h2>
-        <div id="neighbors"></div>
+        <h2 id="name" class="text info">[Node ID]</h2>
+        <div>
+            <table>
+                <tbody class="text">
+                    <tr><td>Input Channels</td> <td id="input_channels">--</td></tr>
+                    <tr><td>Network Setting</td> <td id="network_setting">--</td></tr>
+                    <tr><td>Last Channels</td> <td id="last_channels">--</td></tr>
+                    
+                    <tr><td>FLOPs (M)</td> <td id="flops">--</td></tr>
+                    <tr><td>Prams (G)</td> <td id="params">--</td></tr>
+                    
+                    <tr><td>Top1 (%)</td> <td id="top1">--</td></tr>
+                    <tr><td>Top5 (%)</td> <td id="top5">--</td></tr>
+                    <tr><td>mIoU (%)</td> <td id="miou">--</td></tr>
+                    <tr><td>mAcc (%)</td> <td id="macc">--</td></tr>
+                    <tr><td>aAcc (%)</td> <td id="aacc">--</td></tr>
+                    <tr><td>Moderate (%)</td> <td id="moderate">--</td></tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 
     <button class="leftbtn" onclick="openNavLeft()">☰ Node's Info</button>
     <button class="rightbtn" onclick="openNavRight()">☰ Neighbors' Info</button>
 
     <div id="right-float">
-        <h2 class="text info">Nearest 10 Neighbors:</h2>
-        <div id="members"></div>
+        <h2 class="text info">Nearest 10 Neighbors</h2>
     </div>
 
     <div id="bottom-float">
@@ -59,12 +79,14 @@
                     <thead>
                         <tr class="row100-head">
                             <th class="column1">ID</th>
-                            <th class="column2">Top1</th>
-                            <th class="column2">Top5</th>
-                            <th class="column2">mIoU</th>
-                            <th class="column2">mAcc</th>
-                            <th class="column2">aAcc</th>
-                            <th class="column2">Moderate</th>
+                            <th class="column2">FLOPs (M)</th>
+                            <th class="column2">Params (G)</th>
+                            <th class="column2">Top1 (%)</th>
+                            <th class="column2">Top5 (%)</th>
+                            <th class="column2">mIoU (%)</th>
+                            <th class="column2">mAcc (%)</th>
+                            <th class="column2">aAcc (%)</th>
+                            <th class="column2">Moderate (%)</th>
                         </tr>
                     </thead>
                 </table>
@@ -75,6 +97,8 @@
                     <tbody id="mrows">
                         <tr class="row100-body">
                             <td class="column1">--</td>
+                            <td class="column2">--</td>
+                            <td class="column2">--</td>
                             <td class="column2">--</td>
                             <td class="column2">--</td>
                             <td class="column2">--</td>
