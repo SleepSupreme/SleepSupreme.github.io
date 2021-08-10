@@ -30,15 +30,19 @@ function leftClick(node) {
     frozenGraph();
     lookNode(node);
 
-    let rows = "";
+    let mrows = "";
     for (link of myData.links) {
         if (link.source.id == node.id) {
-            rows += tbodyFormat(link);
+            mrows += mrows_tbodyFormat(link);
         }
     }
 
+    let same_structure = "";
+    same_structure = same_structure_tbodyFormat(node);
+
     document.getElementById("name").innerHTML = node.id;
-    document.getElementById("mrows").innerHTML = rows;
+    document.getElementById("mrows").innerHTML = mrows;
+    document.getElementById("same-structure").innerHTML = same_structure
 
     document.getElementById("input_channels").innerHTML = node.input_channels;
     document.getElementById("network_setting").innerHTML = node.network_setting;
@@ -383,7 +387,7 @@ function onControlChanged() {
     onGraphChanged();
 }
 
-function tbodyFormat(link) {
+function mrows_tbodyFormat(link) {
     return "<tr class=\"row100 body\"><td class=\"column1\" style=\"cursor:pointer;color:deepskyblue\" onclick=\"findNode(this)\">" +
         link.target.id + "</td><td class=\"column2\">" +
         link.target.flops + "</td><td class=\"column2\">" +
@@ -394,6 +398,32 @@ function tbodyFormat(link) {
         link.target.macc + "</td><td class=\"column2\">" +
         link.target.aacc + "</td><td class=\"column2\">" +
         link.target.moderate + "</td></tr>"
+}
+
+function same_structure_tbodyFormat(node) {
+    let count = 0; let c = 2;
+    let tbody = "";  // `c` columns and dynamic rows
+
+    for (n of myData.nodes) {
+        if (n.network_setting == node.network_setting) {
+            if (count%c == 0) {  // a new row
+                tbody += "<tr>"
+            }
+
+            count += 1
+            td = "<td height=\"30px\" style=\"cursor:pointer;color:deepskyblue\" onclick=\"findNode(this)\">" + n.id + "</td>"
+            tbody += td
+            
+            if (count%c == 0) {  // last columns
+                tbody += "</tr>"
+            }
+        }
+    }
+    if (count%c != 0) {  // last but unfilled row
+        tbody += "</tr>"
+    }
+
+    return tbody;
 }
 
 function openNavRight() {
