@@ -401,25 +401,26 @@ function mrows_tbodyFormat(link) {
 }
 
 function same_structure_tbodyFormat(node) {
-    let count = 0; let c = 2;
-    let tbody = "";  // `c` columns and dynamic rows
+    let count = 0;
+    let c = 2;
+    let tbody = ""; // `c` columns and dynamic rows
 
     for (n of myData.nodes) {
         if (n.network_setting == node.network_setting) {
-            if (count%c == 0) {  // a new row
+            if (count % c == 0) { // a new row
                 tbody += "<tr>"
             }
 
             count += 1
             td = "<td height=\"30px\" style=\"cursor:pointer;color:deepskyblue\" onclick=\"findNode(this)\">" + n.id + "</td>"
             tbody += td
-            
-            if (count%c == 0) {  // last columns
+
+            if (count % c == 0) { // last columns
                 tbody += "</tr>"
             }
         }
     }
-    if (count%c != 0) {  // last but unfilled row
+    if (count % c != 0) { // last but unfilled row
         tbody += "</tr>"
     }
 
@@ -459,6 +460,21 @@ function searchNode() {
     }
     if (!found) {
         alert("Node not found!");
+    }
+}
+
+function searchNodebyStructure() {
+    let structure = document.getElementById("searchbar-2").value;
+    let found = false;
+    for (node of myData.nodes) {
+        if (node.structure == structure) {
+            leftClick(node);
+            found = true;
+            break;
+        }
+    }
+    if (!found) {
+        alert("Structure not found!");
     }
 }
 
