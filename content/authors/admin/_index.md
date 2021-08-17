@@ -1,12 +1,10 @@
 ---
 title: Chenguo Lin
 role: Undergraduate
-bio: My research interests include computer vision, machine learning and
-  adversarial attack.
+bio: I'm Chenguo Lin. My general research interests include computer vision and machine learning.
 interests:
   - Computer Vision
   - Machine Learning
-  - Adversarial Attack
 social:
   - icon: envelope
     icon_pack: fas
@@ -32,4 +30,4 @@ email: ""
 superuser: true
 highlight_name: true
 ---
-Chenguo Lin (林琛果) is an undergraduate of computer science, supervised by Prof. Qijun Zhao, at Sichuan University, China. His research interests include computer vision and machine learning. Currently he is working on deep data hiding and adversarial attack with Dr. Chaoning Zhang at [RCV Lab](http://rcv.kaist.ac.kr/), [KAIST](https://www.kaist.ac.kr/en/).
+My name is Chenguo Lin (林琛果). I am an undergraduate of computer science at Sichuan University, China. My general research interests include computer vision and machine learning. Currently, I am working on deep data hiding and adversarial attack with Dr. Chaoning Zhang at [RCV Lab](http://rcv.kaist.ac.kr/), [KAIST](https://www.kaist.ac.kr/en/).
