@@ -19,7 +19,7 @@ function init() {
     let select_control = document.getElementById("cselect");
     select_control.addEventListener("change", onControlChanged);
 
-    d3.json("data/all_settings_300.json").then(function (data) {
+    d3.json("data/all_settings_1200.json").then(function (data) {
         myData = data;
         loadAllSettings();
         setTimeout(frozenGraph, 30000);
@@ -313,7 +313,7 @@ function onGraphChanged() {
     let text = e.options[e.selectedIndex].text;
     document.getElementById("gtype").innerHTML = text;
     if (value == "1") {
-        d3.json("data/all_settings_300.json").then(function (data) {
+        d3.json("data/all_settings_1200.json").then(function (data) {
             myData = data;
             loadAllSettings();
             setTimeout(frozenGraph, 30000);
