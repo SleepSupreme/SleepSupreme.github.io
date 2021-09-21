@@ -1,7 +1,7 @@
-@inproceedings{zhang2021survey,
+@inproceedings{uapsurvey2021,
   title={A Survey on Universal Adversarial Attack},
   author={Zhang, Chaoning and Benz, Philipp and Lin, Chenguo, and Karjauv, Adil and Wu, Jing and Kweon, In-So},
-  booktitle={30th International Joint Conference on Artificial Intelligence (IJCAI-21)},
+  booktitle={30th International Joint Conference on Artificial Intelligence (IJCAI)},
   year={2021},
   organization={International Joint Conferences on Artificial Intelligence Organization}
 }

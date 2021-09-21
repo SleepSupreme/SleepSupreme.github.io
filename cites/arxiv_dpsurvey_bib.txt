@@ -1,0 +1,6 @@
+@article{dpsurvey2021,
+  title={A Brief Survey on Deep Learning Based Data Hiding, Steganography and Watermarking},
+  author={Zhang, Chaoning and Lin, Chenguo and Benz, Philipp and Chen, Kejiang and Zhang, Weiming and Kweon, In So},
+  booktitle={arXiv preprint arXiv:2103.01607},
+  year={2021}
+}

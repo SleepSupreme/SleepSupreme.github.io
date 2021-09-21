@@ -1,6 +1,7 @@
 @inproceedings{watermarkfaker2021,
   title={Watermark Faker: Towards Forgery of Digital Image Watermarking},
-  author={Ruowei Wang, Chenguo Lin, Qijun Zhao, Feiyu Zhu},
+  author={Wang, Ruowei and Lin, Chenguo and Zhao, Qijun and Zhu, Feiyu},
   booktitle={IEEE International Conference on Multimedia and Expo (ICME)},
-  year={2021}
+  year={2021},
+  organization={IEEE}
 }
